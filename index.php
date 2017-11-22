@@ -22,7 +22,7 @@ function showCalculatorForm($operand_1, $operator, $operand_2, $answer) {
 <input type='submit' name='multiply' value='*'></br>
 <input type='submit' name='divide' value='/'>
 <input type='submit' name='equals' value='='>
-<p><a href=''>C</a></p>
+<p><a href=''>Reset</a></p>
 </form>";
 	echo $calulator_form;
 }
@@ -42,9 +42,17 @@ $operator = $_POST['operator'];
 $operand_2 = $_POST['operand_2'];
 $answer = $_POST['answer'];
 
+
+//this needs sorting. I am trying to enable numbers > 9 in operand_1...
 if($_POST['operator']=="") {
 if (isset($_POST['n'])) {
 $operand_1 = $_POST['n'];
+}
+}
+
+if($_POST['operator']=="" AND $_POST['operand_1']!="") {
+	if (isset($_POST['n'])) {
+	$operand_1 = $operand_1 * 10 + $_POST['n'];
 }
 }
 
